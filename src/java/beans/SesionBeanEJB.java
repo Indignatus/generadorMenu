@@ -6,6 +6,10 @@
 package beans;
 
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+import entities.Producto;
 
 /**
  *
@@ -14,6 +18,24 @@ import javax.ejb.Stateless;
 @Stateless
 public class SesionBeanEJB {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    @PersistenceUnit
+    EntityManagerFactory emf;
+    
+    public boolean insertarProducto(Producto p){
+        if (!existeProducto(p)){
+            EntityManager em = emf.createEntityManager();
+            em.persist(p);
+            em.close();
+            return true;
+        }else {
+            return false;
+        }
+    }
+    
+    public boolean existeProducto(Producto p){
+        EntityManager em = emf.createEntityManager();
+        Producto encontrado = em.find(Producto.class, p.getIdProducto());
+        em.close();
+        return encontrado != null;
+    }
 }
