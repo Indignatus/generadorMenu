@@ -10,6 +10,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import entities.Producto;
+import java.util.List;
+import javax.persistence.Query;
 
 /**
  *
@@ -34,8 +36,10 @@ public class SesionBeanEJB {
     
     public boolean existeProducto(Producto p){
         EntityManager em = emf.createEntityManager();
-        Producto encontrado = em.find(Producto.class, p.getIdProducto());
+        Query q = em.createNamedQuery("Producto.findByNombre");
+        q.setParameter("nombre", p.getNombre());
+        List<Producto> productos = q.getResultList();
         em.close();
-        return encontrado != null;
+        return !productos.isEmpty();
     }
 }

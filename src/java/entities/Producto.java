@@ -60,7 +60,8 @@ public class Producto implements Serializable {
     @OneToMany(mappedBy = "segundoPlato")
     private Collection<Menu> menuCollection3;
 
-    public Producto(String nombre, String cantidad, Double precio) {
+    public Producto(Integer idProducto, String nombre, String cantidad, Double precio) {
+        this.idProducto = idProducto;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.precio = precio;
