@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>AgregarProducto</servlet-name>
+        <servlet-class>servlets.AgregarProducto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditarProducto</servlet-name>
+        <servlet-class>servlets.EditarProducto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BorrarProducto</servlet-name>
+        <servlet-class>servlets.BorrarProducto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AgregarProducto</servlet-name>
+        <url-pattern>/AgregarProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarProducto</servlet-name>
+        <url-pattern>/EditarProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BorrarProducto</servlet-name>
+        <url-pattern>/BorrarProducto</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

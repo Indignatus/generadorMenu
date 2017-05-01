@@ -10,6 +10,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import entities.Producto;
+import entities.Usuario;
+import java.util.List;
+import javax.persistence.Query;
 
 /**
  *
@@ -32,10 +35,40 @@ public class SesionBeanEJB {
         }
     }
     
+    public boolean borrarProducto (Producto p){
+        EntityManager em = emf.createEntityManager();
+        Producto producto = em.find(Producto.class, p.getNombre());
+        boolean ok = false;
+        if(producto != null){
+            em.remove(producto);
+            ok = true;
+        }
+        em.close();
+        return ok;
+    }
+    
     public boolean existeProducto(Producto p){
         EntityManager em = emf.createEntityManager();
-        Producto encontrado = em.find(Producto.class, p.getIdProducto());
+        Query q = em.createNamedQuery("Producto.findByNombre");
+        q.setParameter("nombre", p.getNombre());
+        List<Producto> productos = q.getResultList();
         em.close();
-        return encontrado != null;
+        return !productos.isEmpty();
+    }
+       public boolean createUser(Usuario u) {
+
+        EntityManager em = emf.createEntityManager();
+        boolean ok = false;
+       Query q = em.createNamedQuery("Usuario.findByNombre");
+        q.setParameter("nombre", u.getNombre());
+       List<Usuario> users = q.getResultList();
+
+        if (users.isEmpty()) {
+            em.persist(u);
+            ok = true;
+        }
+        em.close();
+
+        return ok;
     }
 }

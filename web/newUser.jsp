@@ -8,18 +8,17 @@
 <!DOCTYPE html>
 
 
-//Probando commit
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="NewUserr" method="POST">
+        <form action="NewUser" method="POST">
             <p>Name: <input type="text" name="name"></p>
             <p>Pass: <input type="text" name="pass"></p>
         
-            <p><input type="submit" value="New" name="newuser"></p>
+                    <p><input type="submit" value="New" name="newuser"></p>
         </form>
     </body>
 </html>
