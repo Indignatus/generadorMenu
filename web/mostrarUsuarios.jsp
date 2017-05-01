@@ -15,7 +15,7 @@
     </head>
     <body>
         <div>
-            <% ArrayList<Object> listaUsuarios = (ArrayList) session.getAttribute("mostrarusuarios");
+            <% ArrayList<Object[]> listaUsuarios = (ArrayList) session.getAttribute("mostrarusuarios");
                 if (listaUsuarios != null) { %>
             <table>
                 <tr>
@@ -26,14 +26,14 @@
                         Nombre
                     </th>
                 </tr>
-                <% for (Object l : listaUsuarios) {%>
+                <% for (Object[] la : listaUsuarios) {%>
 
                 <tr>
                     <th>
-                        <% listaUsuarios.get(0); %>
+                        <% la[0].toString(); %>
                     </th>
                     <th>
-                        <% listaUsuarios.get(1); %>
+                        <% la[1].toString(); %>
                     </th>
                 </tr>
 
