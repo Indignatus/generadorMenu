@@ -59,4 +59,11 @@ public class SesionBeanEJB {
 
         return ok;
     }
+           public List<Object[]> mostrarUsuarios() {
+        EntityManager em = emf.createEntityManager();        
+        Query query = em.createQuery("select a.idUsuario, a.nombre from Usuario a");
+        List<Object[]> classis = query.getResultList();
+
+        return classis;
+    }
 }
