@@ -12,6 +12,10 @@
         <servlet-name>BorrarProducto</servlet-name>
         <servlet-class>servlets.BorrarProducto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VerProducto</servlet-name>
+        <servlet-class>servlets.VerProducto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarProducto</servlet-name>
         <url-pattern>/AgregarProducto</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>BorrarProducto</servlet-name>
         <url-pattern>/BorrarProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerProducto</servlet-name>
+        <url-pattern>/VerProducto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
