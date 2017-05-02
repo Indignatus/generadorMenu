@@ -16,13 +16,13 @@
         <p>Product already exists.</p>
         <% } else if (status.equals(NewUser.STATUS_OK)) { %>
         <p>Usuario creado correctamente</p>
-        <% }%>
-        <% 
-        else if (status.equals(NewUser.STATUS_ERROR)) { %>
+        <% } else if (status.equals(NewUser.STATUS_ERROR)) { %>
         <p>El usuario no se ha creado correctamente y no miento.</p>
+        <% } else if (status.equals("Borrado correctamente")) { %>
+        <p>Usuario Borrado correctamente.</p>
+        <% } else if (status.equals("Borrado incorrectamente")) { %>
+        <p>El usuario no se ha borrado correctamente y no miento.</p>
         <% }%>
-
-
         <a href="index.html">Main menu</a>
     </body>
 </html>

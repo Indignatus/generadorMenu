@@ -6,6 +6,7 @@
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="servlets.NewUser"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,7 @@
     </head>
     <body>
         <div>
-            <% ArrayList<Object[]> listaUsuarios = (ArrayList) session.getAttribute("mostrarusuarios");
+            <% List<Object[]> listaUsuarios = (List<Object[]>) request.getAttribute("mostrarUsuarios");
                 if (listaUsuarios != null) { %>
             <table>
                 <tr>
@@ -30,16 +31,24 @@
 
                 <tr>
                     <th>
-                        <% la[0].toString(); %>
+                        <%=la[0].toString() %>
                     </th>
                     <th>
-                        <% la[1].toString(); %>
+                        <%=la[1].toString() %>
+                    </th>
+                    <th>
+                        <form action="NewUser" method="POST">
+                            <input type="hidden" value= <%=la[0].toString() %> name="borrarId">
+                            <input type="submit" value= "borrar"  name="borrar">
+                        </form>
                     </th>
                 </tr>
 
                 <%}%>   
             </table>
-            <%}%>
+            <%} else { %>
+            hola  Sergi 
+            <% } %>
         </div>
 
     </body>

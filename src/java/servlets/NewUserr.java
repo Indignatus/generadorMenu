@@ -1,60 +1,47 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package servlets;
 
-import beans.SesionBeanEJB;
-import entities.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.Integer.parseInt;
-
-import java.util.List;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class NewUser extends HttpServlet {
+/**
+ *
+ * @author sergi
+ */
+public class NewUserr extends HttpServlet {
 
-    public static final String STATUS_OK = "userOk";
-    public static final String STATUS_ERROR = "userError";
-    @EJB
-    SesionBeanEJB ejb;
-
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        if ("New".equals(request.getParameter("newuser"))) {
-
-            String name = request.getParameter("name");
-            String pass = request.getParameter("pass");
-
-            Usuario u = new Usuario(name, pass);
-
-            if (ejb.createUser(u)) {
-                request.setAttribute("status", STATUS_OK);
-            } else {
-                request.setAttribute("status", STATUS_ERROR);
-            }
-            request.getRequestDispatcher("/final.jsp").forward(request, response);
-        } else if ("veruser".equals(request.getParameter("veruser"))) {
-            List<Object[]> listaUsuarios = ejb.mostrarUsuarios();
-            request.setAttribute("mostrarUsuarios", listaUsuarios);
-            request.getRequestDispatcher("/mostrarUsuarios.jsp").forward(request, response);
-
-        } else if ("borrar".equals(request.getParameter("borrar"))) {
-
-            if (ejb.borrar(parseInt(request.getParameter("borrarId")))) {
-
-                request.setAttribute("status", "Borrado correctamente");
-
-            } else {
-                request.setAttribute("status", "Borrado incorrectamente");
-            }
-            request.getRequestDispatcher("/final.jsp").forward(request, response);
-
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NewUserr</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet NewUserr at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -23,19 +23,19 @@ public class SesionBeanEJB {
 
     @PersistenceUnit
     EntityManagerFactory emf;
-    
-    public boolean insertarProducto(Producto p){
-        if (!existeProducto(p)){
+
+    public boolean insertarProducto(Producto p) {
+        if (!existeProducto(p)) {
             EntityManager em = emf.createEntityManager();
             em.persist(p);
             em.close();
             return true;
-        }else {
+        } else {
             return false;
         }
     }
-    
-    public boolean existeProducto(Producto p){
+
+    public boolean existeProducto(Producto p) {
         EntityManager em = emf.createEntityManager();
         Query q = em.createNamedQuery("Producto.findByNombre");
         q.setParameter("nombre", p.getNombre());
@@ -43,13 +43,14 @@ public class SesionBeanEJB {
         em.close();
         return !productos.isEmpty();
     }
-       public boolean createUser(Usuario u) {
+
+    public boolean createUser(Usuario u) {
 
         EntityManager em = emf.createEntityManager();
         boolean ok = false;
-       Query q = em.createNamedQuery("Usuario.findByNombre");
+        Query q = em.createNamedQuery("Usuario.findByNombre");
         q.setParameter("nombre", u.getNombre());
-       List<Usuario> users = q.getResultList();
+        List<Usuario> users = q.getResultList();
 
         if (users.isEmpty()) {
             em.persist(u);
@@ -59,11 +60,27 @@ public class SesionBeanEJB {
 
         return ok;
     }
-           public List<Object[]> mostrarUsuarios() {
-        EntityManager em = emf.createEntityManager();        
+
+    public List<Object[]> mostrarUsuarios() {
+        EntityManager em = emf.createEntityManager();
         Query query = em.createQuery("select a.idUsuario, a.nombre from Usuario a");
         List<Object[]> classis = query.getResultList();
 
         return classis;
     }
+
+    public boolean borrar(int a) {
+        EntityManager em = emf.createEntityManager();
+        Usuario usuario = em.find(Usuario.class, a);
+
+        if (usuario != null) {
+            em.remove(usuario);
+            em.close();
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
