@@ -82,5 +82,23 @@ public class SesionBeanEJB {
             return false;
         }
     }
+    
+    public boolean login(String name, String pass){
+          EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("select u from Usuario u where u.nombre = :x and u.pass = :y ");
+        q.setParameter("x", name);
+        q.setParameter("y", pass);
+        q.getResultList();
+        
+        List<Usuario> users = q.getResultList();
+        
+        if(users.isEmpty()){
+            return false;
+        }else{
+            return true;
+        }      
+        
+        
+    }
 
 }
