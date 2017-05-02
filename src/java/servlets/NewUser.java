@@ -3,6 +3,8 @@ package servlets;
 import beans.SesionBeanEJB;
 import entities.Usuario;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +35,12 @@ public class NewUser extends HttpServlet {
                 request.setAttribute("status", STATUS_ERROR);
             }
             request.getRequestDispatcher("/final.jsp").forward(request, response);
+        } else if ("New".equals(request.getParameter("veruser"))) {
+            List<Object[]> listaUsuarios = ejb.mostrarUsuarios();
+            
+                request.setAttribute("mostrarusuarios", listaUsuarios);
+                request.getRequestDispatcher("/mostrarUsuarios.jsp").forward(request, response);
+          
         }
 
     }
