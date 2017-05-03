@@ -23,6 +23,10 @@
                 <option value="<%= p.getNombre() %>">Nombre:<%= p.getNombre() %> Cantidad:<%= p.getCantidad()%> Precio: <%= p.getPrecio()%></option>
                 <% } %>
             </select>
+        <p></p>
+        <p>Introduce el nombre nuevo: <input type="text" name="nombreNuevo"></p>
+        <p>Introduce la cantidad: <input type="number" name="cantidadNueva"></p>
+        <p>Introduce el precio: <input type="number" name="precioNuevo"></p>
         <p><input type="submit" name="editar" value="Guardar"></p>
         </form>
     </body>

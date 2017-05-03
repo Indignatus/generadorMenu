@@ -14,6 +14,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import static servlets.AgregarProducto.STATUS_ERROR;
+import static servlets.AgregarProducto.STATUS_OK;
 
 /**
  *
@@ -37,6 +39,10 @@ public class EditarProducto extends HttpServlet {
         if ("Guardar".equals(request.getParameter("editar"))){
             // Modificamos el Producto
             String nombreProducto = request.getParameter("productos");
+            Producto p = new Producto(nombreProducto);
+            
+            
+            
         }else {
         List<Producto> producto = ejb.selectAllProductos();
         request.setAttribute("producto", producto);

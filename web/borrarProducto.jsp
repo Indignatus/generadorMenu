@@ -4,6 +4,8 @@
     Author     : Ivan
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="entities.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,9 +14,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="BorrarProducto" method='POST'>
-            <p>Nombre: <input type="text" name="nombre" required></p>
-            <p><input type="submit" value="Borrar" name="borrarproducto"></p>
-        </form>
+        <p>Cual quieres eliminar?</p>
+    <form action="BorrarProducto" method="POST">
+        <p>Productos: <select name="productos">
+            <%
+            List<Producto> productos = (List<Producto>) request.getAttribute("producto");
+            for (Producto p : productos){
+                %>
+                <option value="<%= p.getNombre() %>">Nombre:<%= p.getNombre() %> Cantidad:<%= p.getCantidad()%> Precio: <%= p.getPrecio()%></option>
+                <% } %>
+            </select>
+        <p><input type="submit" name="Borrar Producto" value="Borrar"></p>
+    </form>
     </body>
 </html>
