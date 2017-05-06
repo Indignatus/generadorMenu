@@ -12,18 +12,21 @@
             if (user != null) {
         %>
         <div>
-                           <%
-            
-            if (user.equals("admin")) {
-        %>
+            <%
+                if (user.equals("admin")) {
+            %>
             <form action="newUser.jsp">
                 <input type="submit" value="crearuser" name="crearuser">
             </form>
-    <%  }   %>
+            <%  }   %>
             <form action="NewUser">
                 <input type="submit" value="veruser" name="veruser">
             </form>
-            
+            <form action="ManagerMenu">
+                <input type="hidden" value="mostrarProducto" name="parameter">
+                <input type="submit" value="Crear Menu">
+            </form>
+
             <form action="index.html">
                 <input type="submit" value="login" name="login">
             </form>
