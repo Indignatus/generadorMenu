@@ -32,8 +32,9 @@ public class Login extends HttpServlet {
         
         if(ejb.login(username, password)){
             
+            
         request.getSession(true).setAttribute("user", username);
-        response.sendRedirect(request.getContextPath() + "/menuPrincipal.jsp");
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
             
         }
         

@@ -2,14 +2,37 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form action="Login" method="POST">
-            <p>Username: <input type="text" name="user"></p>
-            <p>Password: <input type="password" name="pass"></p>
-            <p><input type="submit" value="Login"></p>
-        </form>
+        <%
+            String user = (String) session.getAttribute("user");
+            if (user != null) {
+        %>
+        <div>
+                           <%
+            
+            if (user.equals("admin")) {
+        %>
+            <form action="newUser.jsp">
+                <input type="submit" value="crearuser" name="crearuser">
+            </form>
+    <%  }   %>
+            <form action="NewUser">
+                <input type="submit" value="veruser" name="veruser">
+            </form>
+            
+            <form action="index.html">
+                <input type="submit" value="login" name="login">
+            </form>
+
+        </div>
+        <% } else {
+        %>
+        <h1>No hay usuario validado.</h1>
+        <%
+            }%>
     </body>
 </html>
