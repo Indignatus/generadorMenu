@@ -8,18 +8,19 @@ package servlets;
 import beans.SesionBeanEJB;
 import entities.Producto;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  *
  * @author Ivan
  */
-public class AgregarProducto extends HttpServlet {
+public class BorrarProducto extends HttpServlet {
+
 
     @EJB
     SesionBeanEJB miEjb;
@@ -27,18 +28,14 @@ public class AgregarProducto extends HttpServlet {
     public static final String STATUS_OK = "productoOK";
     public static final String STATUS_ERROR = "productoError";
     
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
-            if("Agregar".equals(request.getParameter("agregarproducto"))){
+        if("Borrar".equals(request.getParameter("borrarproducto"))){
             //Recogemos las variables del formulario
-            String nombre = request.getParameter("nombre");
-            String cantidad = request.getParameter("cantidad");
-            double precio = Double.parseDouble(request.getParameter("precio"));
-            Producto p = new Producto(0, nombre,cantidad,precio);
-            if (miEjb.insertarProducto(p)){
+            String nombre = request.getParameter("productos");
+            Producto p = new Producto(nombre);
+            if (miEjb.borrarProducto(p)){
                 request.setAttribute("status", STATUS_OK);
             } else {
                 request.setAttribute("status", STATUS_ERROR);

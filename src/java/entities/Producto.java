@@ -67,6 +67,11 @@ public class Producto implements Serializable {
         this.precio = precio;
     }
 
+    public Producto(String nombre) {
+        this.nombre = nombre;
+    }
+    
+
     public Producto() {
     }
 

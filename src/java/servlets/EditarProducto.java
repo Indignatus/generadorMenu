@@ -8,42 +8,45 @@ package servlets;
 import beans.SesionBeanEJB;
 import entities.Producto;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import static servlets.AgregarProducto.STATUS_ERROR;
+import static servlets.AgregarProducto.STATUS_OK;
 
 /**
  *
  * @author Ivan
  */
-public class AgregarProducto extends HttpServlet {
+public class EditarProducto extends HttpServlet {
 
-    @EJB
-    SesionBeanEJB miEjb;
-    
-    public static final String STATUS_OK = "productoOK";
-    public static final String STATUS_ERROR = "productoError";
-    
-
+    @EJB SesionBeanEJB ejb;
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-            if("Agregar".equals(request.getParameter("agregarproducto"))){
-            //Recogemos las variables del formulario
-            String nombre = request.getParameter("nombre");
-            String cantidad = request.getParameter("cantidad");
-            double precio = Double.parseDouble(request.getParameter("precio"));
-            Producto p = new Producto(0, nombre,cantidad,precio);
-            if (miEjb.insertarProducto(p)){
-                request.setAttribute("status", STATUS_OK);
-            } else {
-                request.setAttribute("status", STATUS_ERROR);
-            }
-              request.getRequestDispatcher("/final.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        if ("Guardar".equals(request.getParameter("editar"))){
+            // Modificamos el Producto
+            String nombreProducto = request.getParameter("productos");
+            Producto p = new Producto(nombreProducto);
+            
+            
+            
+        }else {
+        List<Producto> producto = ejb.selectAllProductos();
+        request.setAttribute("producto", producto);
+        request.getRequestDispatcher("/editarProducto.jsp").forward(request, response);   
         }
     }
 

@@ -48,6 +48,11 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
+    public Usuario(String nombre, String pass) {
+        this.nombre = nombre;
+        this.pass = pass;
+    }
+
     public Usuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
@@ -100,5 +105,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "entities.Usuario[ idUsuario=" + idUsuario + " ]";
     }
-    
+
 }
