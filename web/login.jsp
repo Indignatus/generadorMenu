@@ -22,13 +22,16 @@
             <form action="NewUser">
                 <input type="submit" value="veruser" name="veruser">
             </form>
-            <form action="ManagerMenu">
+            <form action="managerMenu">
                 <input type="hidden" value="mostrarProducto" name="parameter">
                 <input type="submit" value="Crear Menu">
             </form>
 
             <form action="index.html">
                 <input type="submit" value="login" name="login">
+            </form>
+            <form action="mostrarMenu.jsp">
+                <input type="submit" value="mostrarMenu" name="mostrarMenu">
             </form>
 
         </div>

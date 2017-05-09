@@ -24,7 +24,7 @@
         %>  
         
         <h1>Creación de menuses</h1>
-        <form action="ManagerMenu">
+        <form action="managerMenu">
             <p>Name <input type="text" name="name"></p>
             <select name ='type'>
                 <option value='lunes'> lunes </option>
@@ -37,27 +37,28 @@
             </select>
 
             <p>Temporada <input type="text" name="temporada"></p>
-            <select name ='primerPlato'>
+            Primer Plato: <select name ='primerPlato'>
                 <% for (Producto p : listaProductos) { %>
-                <option value='<%p.getIdProducto();%>'> <%p.getNombre();%> </option>
+                <option value='<%=p.getIdProducto()%>'> <%=p.getNombre()%> </option>
                 <% }%>
             </select>
-            <select name ='segundoPlato'>
+            Segundo Plato: <select name ='segundoPlato'>
                 <% for (Producto p : listaProductos) { %>
-                <option value='<%p.getIdProducto();%>'> <%p.getNombre();%> </option>
+                <option value='<%=p.getIdProducto()%>'> <%=p.getNombre()%> </option>
                 <% }%>
             </select>
-            <select name ='postre'>
+            Postre: <select name ='postre'>
                 <% for (Producto p : listaProductos) { %>
-                <option value='<%p.getIdProducto();%>'> <%p.getNombre();%> </option>
+                <option value='<%=p.getIdProducto()%>'> <%=p.getNombre()%> </option>
                 <% }%>
             </select>
-            <select name ='bebida'>
+           Bebida: <select name ='bebida'>
                 <% for (Producto p : listaProductos) { %>
-                <option value='<%p.getIdProducto();%>'> <%p.getNombre();%> </option>
+                <option value='<%=p.getIdProducto()%>'> <%=p.getNombre()%> </option>
                 <% }%>
             </select>
             <p>Precio <input type="number" name="precio"></p>
+            <input type="submit" value=crearMenu name="parameter">
         </form>
         <% } %>
         <% } else {

@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  *
  * @author sergi
@@ -65,8 +64,20 @@ public class ManagerMenu extends HttpServlet {
             menu.setBebida(ejb.buscarProductoById(bebida));
 
             ejb.createMenu(menu);
-            
+
             response.sendRedirect(request.getContextPath() + "/login.jsp");
+
+        } else if ("mostrarMenu".equals(request.getParameter("mostrarMenu"))) {
+
+            String semana = request.getParameter("type");
+
+            // buscar menus segun el filtro semana 
+            List<Menu> menu = ejb.mostrarMenuPorSemana(semana);
+            if (menu != null) {
+                request.setAttribute("listaMenu", menu);
+                request.setAttribute("filtro", "filtro");
+                request.getRequestDispatcher("/mostrarMenu.jsp").forward(request, response);
+            }
 
         }
 
