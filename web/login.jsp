@@ -15,25 +15,32 @@
             <%
                 if (user.equals("admin")) {
             %>
+            <!-- Crear un nuevo usuario -->
             <form action="newUser.jsp">
-                <input type="submit" value="crearuser" name="crearuser">
+                <input type="submit" value="Crear un nuevo Usuario" name="crearuser">
             </form>
             <%  }   %>
+            
+            <!-- Ver la lista de usuarios -->
             <form action="NewUser">
-                <input type="submit" value="veruser" name="veruser">
+                <input type="submit" value="Ver lista de Usuarios" name="veruser">
+            </form>   
+            
+            <!-- Ir a la seleccion de opciones del Menú -->
+            <form action="menu.jsp">
+            <input type="submit" value="Menu">
             </form>
-            <form action="managerMenu">
-                <input type="hidden" value="mostrarProducto" name="parameter">
-                <input type="submit" value="Crear Menu">
+            
+            <!-- Ir a la seleccion de opciones de Productos -->
+            <form action="producto.jsp">
+            <input type="submit" value="Producto">
             </form>
-
+            
+            <!-- Ir al principio (Menu Principal Login) -->
             <form action="index.html">
                 <input type="submit" value="login" name="login">
             </form>
-            <form action="mostrarMenu.jsp">
-                <input type="submit" value="mostrarMenu" name="mostrarMenu">
-            </form>
-
+            
         </div>
         <% } else {
         %>
