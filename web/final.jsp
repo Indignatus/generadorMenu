@@ -23,9 +23,14 @@
         <p>Producto borrado correctamente</p>
         <% } else if (status.equals(BorrarProducto.STATUS_ERROR)) { %>
         <p>El Producto no se ha podido borrar correctamente</p>
+        <% } else if (status.equals("Borrado correctamente")) { %>
+        <p>Usuario Borrado correctamente.</p>
+        <% } else if (status.equals("Borrado incorrectamente")) { %>
+        <p>El usuario no se ha borrado correctamente y no miento.</p>
         <% }%>
 
 
         <a href="menuPrincipal.jsp">Volver al Menú</a>
+        <a href="index.html">Main menu</a>
     </body>
 </html>

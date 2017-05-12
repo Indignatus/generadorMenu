@@ -15,6 +15,16 @@
     <servlet>
         <servlet-name>VerProducto</servlet-name>
         <servlet-class>servlets.VerProducto</servlet-class>
+        <servlet-name>NewUser</servlet-name>
+        <servlet-class>servlets.NewUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>servlets.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>managerMenu</servlet-name>
+        <servlet-class>servlets.ManagerMenu</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AgregarProducto</servlet-name>
@@ -31,6 +41,16 @@
     <servlet-mapping>
         <servlet-name>VerProducto</servlet-name>
         <url-pattern>/VerProducto</url-pattern>
+        <servlet-name>NewUser</servlet-name>
+        <url-pattern>/NewUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>managerMenu</servlet-name>
+        <url-pattern>/managerMenu</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
