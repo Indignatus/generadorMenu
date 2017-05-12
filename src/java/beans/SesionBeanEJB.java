@@ -15,10 +15,7 @@ import entities.Usuario;
 import java.util.List;
 import javax.persistence.Query;
 
-/**
- *
- * @author sergi
- */
+
 @Stateless
 public class SesionBeanEJB {
 

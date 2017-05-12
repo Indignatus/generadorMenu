@@ -15,6 +15,9 @@
     <servlet>
         <servlet-name>VerProducto</servlet-name>
         <servlet-class>servlets.VerProducto</servlet-class>
+    </servlet>
+        <!-- Mezcla rama sergi con master -->
+    <servlet>
         <servlet-name>NewUser</servlet-name>
         <servlet-class>servlets.NewUser</servlet-class>
     </servlet>
@@ -41,6 +44,9 @@
     <servlet-mapping>
         <servlet-name>VerProducto</servlet-name>
         <url-pattern>/VerProducto</url-pattern>
+    </servlet-mapping>
+        <!-- Otra mezcla de ramas -->
+    <servlet-mapping>
         <servlet-name>NewUser</servlet-name>
         <url-pattern>/NewUser</url-pattern>
     </servlet-mapping>

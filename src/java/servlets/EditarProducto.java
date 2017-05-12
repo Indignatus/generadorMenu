@@ -23,28 +23,31 @@ import static servlets.AgregarProducto.STATUS_OK;
  */
 public class EditarProducto extends HttpServlet {
 
-    @EJB SesionBeanEJB ejb;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    @EJB
+    SesionBeanEJB miEjb;
+    
+    public static final String STATUS_OK = "productoOK";
+    public static final String STATUS_ERROR = "productoError";
+
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         if ("Guardar".equals(request.getParameter("editar"))){
             // Modificamos el Producto
-            String nombreProducto = request.getParameter("productos");
-            Producto p = new Producto(nombreProducto);
-            
-            
-            
+        int id = Integer.parseInt(request.getParameter("productos"));
+        String nombre = request.getParameter("nombreNuevo");
+        String cantidad = request.getParameter("cantidadNueva");
+        double precio = Double.parseDouble(request.getParameter("precioNuevo"));
+        Producto p = new Producto(id, nombre, cantidad, precio);
+        if (miEjb.modificarProducto(p)){
+                request.setAttribute("status", STATUS_OK);
+            } else {
+                request.setAttribute("status", STATUS_ERROR);
+            }
+              request.getRequestDispatcher("/final.jsp").forward(request, response); 
         }else {
-        List<Producto> producto = ejb.selectAllProductos();
+        List<Producto> producto = miEjb.selectAllProductos();
         request.setAttribute("producto", producto);
         request.getRequestDispatcher("/editarProducto.jsp").forward(request, response);   
         }

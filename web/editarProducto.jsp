@@ -20,7 +20,7 @@
             List<Producto> productos = (List<Producto>) request.getAttribute("producto");
             for (Producto p : productos){
                 %>
-                <option value="<%= p.getNombre() %>">Nombre:<%= p.getNombre() %> Cantidad:<%= p.getCantidad()%> Precio: <%= p.getPrecio()%></option>
+                <option value="<%= p.getIdProducto() %>">Nombre:<%= p.getNombre() %> Cantidad:<%= p.getCantidad()%> Precio: <%= p.getPrecio()%></option>
                 <% } %>
             </select>
         <p></p>

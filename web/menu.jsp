@@ -12,12 +12,17 @@
         <title>Menu</title>
     </head>
     <body>
-        <form action="agregarProducto">
-            <input type="submit" value="AgregarProducto">       
-        </form>
-        <form action="verMenuSemanal">
-            <input type="submit" value="VerMenuSemanal">
-        </form>
+        <!-- Crear un nuevo Menú -->
+            <form action="managerMenu">
+                <input type="hidden" value="mostrarProducto" name="parameter">
+                <input type="submit" value="Crear Menu">
+            </form>
+        
+        <!-- Mostrar Menus -->
+            <form action="mostrarMenu.jsp">
+                <input type="submit" value="mostrarMenu" name="mostrarMenu">
+            </form>
+        
         <form action="borrarMenu">
             <input type="submit" value="BorrarMenu">
         </form>

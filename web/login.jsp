@@ -17,14 +17,16 @@
             %>
             <!-- Crear un nuevo usuario -->
             <form action="newUser.jsp">
-                <input type="submit" value="Crear un nuevo Usuario" name="crearuser">
+                <input type="submit" value="Crear Nuevo Usuario" name="crearuser">
             </form>
-            <%  }   %>
+            
             
             <!-- Ver la lista de usuarios -->
             <form action="NewUser">
-                <input type="submit" value="Ver lista de Usuarios" name="veruser">
-            </form>   
+                <input type="submit" value="Ver Lista de Usuarios" name="veruser">
+            </form>  
+            
+            <%  }   %>
             
             <!-- Ir a la seleccion de opciones del Menú -->
             <form action="menu.jsp">

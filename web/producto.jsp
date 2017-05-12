@@ -18,7 +18,8 @@
         <form action="EditarProducto">
             <input type="submit" value="Editar Producto">
         </form>
-        <form action="borrarProducto.jsp">
+        <form action="VerProducto">
+            <input type="hidden" name="borrar" value="borrar">
             <input type="submit" value="Borrar Producto">
         </form>
         <form action="VerProducto">

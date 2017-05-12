@@ -37,7 +37,7 @@ public class NewUser extends HttpServlet {
                 request.setAttribute("status", STATUS_ERROR);
             }
             request.getRequestDispatcher("/final.jsp").forward(request, response);
-        } else if ("veruser".equals(request.getParameter("veruser"))) {
+        } else if ("Ver Lista de Usuarios".equals(request.getParameter("veruser"))) {
             List<Object[]> listaUsuarios = ejb.mostrarUsuarios();
             request.setAttribute("mostrarUsuarios", listaUsuarios);
             request.getRequestDispatcher("/mostrarUsuarios.jsp").forward(request, response);

@@ -52,6 +52,7 @@ public class ManagerMenu extends HttpServlet {
             int segundoPlato = parseInt(request.getParameter("segundoPlato"));
             int postre = parseInt(request.getParameter("postre"));
             int bebida = parseInt(request.getParameter("bebida"));
+            double precio = Double.parseDouble(request.getParameter("precio"));
 
             Menu menu = new Menu();
 
@@ -62,6 +63,8 @@ public class ManagerMenu extends HttpServlet {
             menu.setSegundoPlato(ejb.buscarProductoById(segundoPlato));
             menu.setPostre(ejb.buscarProductoById(postre));
             menu.setBebida(ejb.buscarProductoById(bebida));
+            menu.setPrecio(precio);
+
 
             ejb.createMenu(menu);
 

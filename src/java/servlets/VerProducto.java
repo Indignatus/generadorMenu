@@ -22,7 +22,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class VerProducto extends HttpServlet {
 
-    @EJB SesionBeanEJB ejb;
+    @EJB
+    SesionBeanEJB ejb;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,7 +39,11 @@ public class VerProducto extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         List<Producto> producto = ejb.selectAllProductos();
         request.setAttribute("producto", producto);
-        request.getRequestDispatcher("/verProducto.jsp").forward(request, response); 
+        if ("borrar".equals(request.getParameter("borrar"))) {
+            request.getRequestDispatcher("/borrarProducto.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("/verProducto.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

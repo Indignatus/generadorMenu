@@ -33,8 +33,8 @@ public class BorrarProducto extends HttpServlet {
         
         if("Borrar".equals(request.getParameter("borrarproducto"))){
             //Recogemos las variables del formulario
-            String nombre = request.getParameter("productos");
-            Producto p = new Producto(nombre);
+            int id = Integer.parseInt(request.getParameter("productos"));
+            Producto p = new Producto(id);
             if (miEjb.borrarProducto(p)){
                 request.setAttribute("status", STATUS_OK);
             } else {

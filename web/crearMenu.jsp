@@ -58,8 +58,9 @@
                 <% }%>
             </select>
             <p>Precio <input type="number" name="precio"></p>
-            <input type="submit" value=crearMenu name="parameter">
+            <input type="submit" value="Crear el Menú" name="parameter">
         </form>
+
         <% } %>
         <% } else {
         %>

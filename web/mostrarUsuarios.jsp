@@ -38,7 +38,7 @@
                     </th>
                     <th>
                         <form action="NewUser" method="POST">
-                            <input type="hidden" value= <%=la[0].toString() %> name="borrarId">
+                            <input type="hidden" value= "<%=la[0].toString()%>" name="borrarId">
                             <input type="submit" value= "borrar"  name="borrar">
                         </form>
                     </th>
@@ -47,7 +47,7 @@
                 <%}%>   
             </table>
             <%} else { %>
-            hola  Sergi 
+            <p>No hay usuarios registrados</p>
             <% } %>
         </div>
 
