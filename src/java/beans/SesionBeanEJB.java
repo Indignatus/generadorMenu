@@ -5,6 +5,7 @@
  */
 package beans;
 
+import entities.Menu;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -24,6 +25,24 @@ public class SesionBeanEJB {
     @PersistenceUnit
     EntityManagerFactory emf;
     
+    
+    public boolean login(String name, String pass) {
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("select u from Usuario u where u.nombre = :x and u.pass = :y ");
+        q.setParameter("x", name);
+        q.setParameter("y", pass);
+        q.getResultList();
+
+        List<Usuario> users = q.getResultList();
+
+        if (users.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+    
     public boolean insertarProducto(Producto p){
         if (!existeProducto(p)){
             EntityManager em = emf.createEntityManager();
@@ -35,9 +54,41 @@ public class SesionBeanEJB {
         }
     }
     
+    public List<Producto> mostrarProducto() {
+        EntityManager em = emf.createEntityManager();
+        Query query = em.createQuery("select p from Producto p");
+        List<Producto> producto = query.getResultList();
+
+        return producto;
+    }
+    
+    public List<Menu> mostrarMenuPorSemana(String diaSemana) {
+        EntityManager em = emf.createEntityManager();
+        Query query = em.createQuery("select m from Menu m where m.semana = :se");
+       query.setParameter("se", diaSemana);
+        List<Menu> menu = query.getResultList();
+
+        return menu;
+    }
+    
+    public boolean modificarProducto(Producto p) {
+        EntityManager em = emf.createEntityManager();
+        Producto modifProducto = em.find(Producto.class, p.getIdProducto());
+        boolean ok = false;
+        if(modifProducto != null){
+            modifProducto.setNombre(p.getNombre());
+            modifProducto.setCantidad(p.getCantidad());
+            modifProducto.setPrecio(p.getPrecio());
+            em.persist(modifProducto);
+            ok = true;
+        }
+        em.close();
+        return ok;
+    }
+    
         public boolean borrarProducto (Producto p){
         EntityManager em = emf.createEntityManager();
-        Producto producto = em.find(Producto.class, p.getNombre());
+        Producto producto = em.find(Producto.class, p.getIdProducto());
         boolean ok = false;
         if(producto != null){
             em.remove(producto);
@@ -45,6 +96,30 @@ public class SesionBeanEJB {
         }
         em.close();
         return ok;
+    }
+        
+        public boolean borrar(int a) {
+        EntityManager em = emf.createEntityManager();
+        Usuario usuario = em.find(Usuario.class, a);
+
+        if (usuario != null) {
+            em.remove(usuario);
+            em.close();
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+        
+            public Producto buscarProductoById(int num) {
+//
+//        Producto producto = new Producto();
+//        EntityManager em = emf.createEntityManager();
+//        Query q = em.createNamedQuery("Producto.findByIdProducto");
+//        q.setParameter("idProducto", num);
+
+        return emf.createEntityManager().find(Producto.class, num);
     }
     
     public boolean existeProducto(Producto p){
@@ -55,6 +130,23 @@ public class SesionBeanEJB {
         em.close();
         return !productos.isEmpty();
     }
+    
+    public boolean createMenu(Menu menu) {
+         EntityManager em = emf.createEntityManager();
+        boolean ok = false;
+        Query q = em.createNamedQuery("Menu.findByNombre");
+        q.setParameter("nombre", menu.getNombre());
+        List<Menu> menus = q.getResultList();
+
+        if (menus.isEmpty()) {
+            em.persist(menu);
+            ok = true;
+        }
+        em.close();
+
+        return ok;
+    }
+    
        public boolean createUser(Usuario u) {
 
         EntityManager em = emf.createEntityManager();
