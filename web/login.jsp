@@ -40,7 +40,7 @@
             
             <!-- Ir al principio (Menu Principal Login) -->
             <form action="index.html">
-                <input type="submit" value="login" name="login">
+                <input type="submit" value="Volver Atras" name="login">
             </form>
             
         </div>
