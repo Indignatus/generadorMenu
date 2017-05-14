@@ -12,12 +12,15 @@
             if (user != null) {
         %>
         <div>
+            <div align="center">
+            <h1>Bienvenido!</h1>
+            <br>
+            </div>
             <%
                 if (user.equals("admin")) {
             %>
             <div align="center">
-            <h1>Bienvenido!</h1>
-            <br>
+            
             <!-- Crear un nuevo usuario -->
             <form action="newUser.jsp">
                 <input type="submit" value="Crear Nuevo Usuario" name="crearuser">
