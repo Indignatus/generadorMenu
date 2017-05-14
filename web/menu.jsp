@@ -13,21 +13,30 @@
     </head>
     <body>
         <!-- Crear un nuevo Menú -->
+        <div align="center">
+            <h1>Panel de Menu</h1>
+            <br>
             <form action="managerMenu">
                 <input type="hidden" value="mostrarProducto" name="parameter">
-                <input type="submit" value="Crear Menu">
+                <input type="submit" value="Crear Menu" style='width:200px; height:25px'>
             </form>
-        
+        </div>
         <!-- Mostrar Menus -->
+        <div align="center">
             <form action="mostrarMenu.jsp">
-                <input type="submit" value="mostrarMenu" name="mostrarMenu">
+                <input type="submit" value="mostrarMenu" name="mostrarMenu" style='width:200px; height:25px'>
             </form>
-        
-        <form action="borrarMenu">
-            <input type="submit" value="BorrarMenu">
+        </div>
+        <div align="center">
+        <form action="managerMenu">
+            <input type="hidden" name="borrar" value="borrar">
+            <input type="submit" value="BorrarMenu" style='width:200px; height:25px'>
         </form>
-        <form action="editarMenu">
-            <input type="submit" value="EditarMenu">
+        </div>    
+        <div align="center">
+        <form action="EditarMenu">
+            <input type="submit" value="EditarMenu" style='width:200px; height:25px'>
         </form>
+        </div>
     </body>
 </html>

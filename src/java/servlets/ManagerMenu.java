@@ -82,6 +82,12 @@ public class ManagerMenu extends HttpServlet {
                 request.getRequestDispatcher("/mostrarMenu.jsp").forward(request, response);
             }
 
+        } else if ("borrar".equals(request.getParameter("borrar"))){
+            List<Menu> menu = ejb.mostrarMenu();
+            if (menu != null) {
+                request.setAttribute("listaMenu", menu);
+                request.getRequestDispatcher("/borrarMenu.jsp").forward(request, response);
+            }
         }
 
     }

@@ -1,3 +1,4 @@
+<%@page import="servlets.BorrarMenu"%>
 <%@page import="servlets.NewUser"%>
 <%@page import="servlets.AgregarProducto"%>
 <%@page import="servlets.BorrarProducto"%>
@@ -44,6 +45,18 @@
         <p>El Producto no se ha podido borrar correctamente</p>
         <p><a href="borrarProducto.jsp">Intentar volver a borrar un Producto</a></p>
         <p><a href="producto.jsp">Volver al Menú de Seleccion</a></p>
+
+        <% } else if (status.equals(BorrarMenu.STATUS_OK)) { %>
+        
+        <p>Menu borrado correctamente</p>
+        <p><a href="borrarMenu.jsp">Borrar otro Menu</a></p>
+        <p><a href="menu.jsp">Volver al Menú de Seleccion</a></p>
+
+        <% } else if (status.equals(BorrarMenu.STATUS_ERROR)) { %>
+        
+        <p>El Menu no se ha podido borrar correctamente</p>
+        <p><a href="borrarMenu.jsp">Intentar volver a borrar un Menu</a></p>
+        <p><a href="menu.jsp">Volver al Menú de Seleccion</a></p>
 
         <% } else if (status.equals("Borrado correctamente")) { %>
         

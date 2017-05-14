@@ -12,12 +12,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <div>
+        <div align="center">
             <form action="menu.jsp">
             <input type="submit" value="Menu">
             </form>
         </div>
-        <div>
+        <div align="center">
             <form action="producto.jsp">
             <input type="submit" value="Producto">
             </form>

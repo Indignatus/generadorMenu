@@ -59,6 +59,14 @@ public class SesionBeanEJB {
         return producto;
     }
     
+        public List<Menu> mostrarMenu() {
+        EntityManager em = emf.createEntityManager();
+        Query query = em.createQuery("select m from Menu m");
+        List<Menu> menu = query.getResultList();
+
+        return menu;
+    }
+    
     public List<Menu> mostrarMenuPorSemana(String diaSemana) {
         EntityManager em = emf.createEntityManager();
         Query query = em.createQuery("select m from Menu m where m.semana = :se");
@@ -89,6 +97,18 @@ public class SesionBeanEJB {
         boolean ok = false;
         if(producto != null){
             em.remove(producto);
+            ok = true;
+        }
+        em.close();
+        return ok;
+    }
+        
+        public boolean borrarMenu (Menu m){
+        EntityManager em = emf.createEntityManager();
+        Menu menu = em.find(Menu.class, m.getIdMenu());
+        boolean ok = false;
+        if(menu != null){
+            em.remove(menu);
             ok = true;
         }
         em.close();

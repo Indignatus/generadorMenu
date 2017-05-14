@@ -12,18 +12,28 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <div align="center">
+            <h1>Panel de Producto</h1>
+            <br>
         <form action="agregarProducto.jsp">
-            <input type="submit" value="Agregar Producto">
+            <input type="submit"  value="Agregar Producto" style='width:200px; height:25px'>
         </form>
+            </div>
+        <div align="center">
         <form action="EditarProducto">
-            <input type="submit" value="Editar Producto">
+            <input type="submit" value="Editar Producto" style='width:200px; height:25px'>
         </form>
+        </div>
+        <div align="center">
         <form action="VerProducto">
             <input type="hidden" name="borrar" value="borrar">
-            <input type="submit" value="Borrar Producto">
+            <input type="submit" value="Borrar Producto" style='width:200px; height:25px'>
         </form>
+        </div>
+        <div align="center">
         <form action="VerProducto">
-            <input type="submit" value="Ver Producto">
+            <input type="submit" value="Ver Producto" style='width:200px; height:25px'>
         </form>
+        </div>
     </body>
 </html>

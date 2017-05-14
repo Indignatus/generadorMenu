@@ -16,7 +16,7 @@
         <servlet-name>VerProducto</servlet-name>
         <servlet-class>servlets.VerProducto</servlet-class>
     </servlet>
-        <!-- Mezcla rama sergi con master -->
+    <!-- Mezcla rama sergi con master -->
     <servlet>
         <servlet-name>NewUser</servlet-name>
         <servlet-class>servlets.NewUser</servlet-class>
@@ -28,6 +28,14 @@
     <servlet>
         <servlet-name>managerMenu</servlet-name>
         <servlet-class>servlets.ManagerMenu</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BorrarMenu</servlet-name>
+        <servlet-class>servlets.BorrarMenu</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditarMenu</servlet-name>
+        <servlet-class>servlets.EditarMenu</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AgregarProducto</servlet-name>
@@ -45,7 +53,7 @@
         <servlet-name>VerProducto</servlet-name>
         <url-pattern>/VerProducto</url-pattern>
     </servlet-mapping>
-        <!-- Otra mezcla de ramas -->
+    <!-- Otra mezcla de ramas -->
     <servlet-mapping>
         <servlet-name>NewUser</servlet-name>
         <url-pattern>/NewUser</url-pattern>
@@ -57,6 +65,14 @@
     <servlet-mapping>
         <servlet-name>managerMenu</servlet-name>
         <url-pattern>/managerMenu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BorrarMenu</servlet-name>
+        <url-pattern>/BorrarMenu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarMenu</servlet-name>
+        <url-pattern>/EditarMenu</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

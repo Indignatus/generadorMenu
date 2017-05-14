@@ -1,31 +1,36 @@
 <%-- 
-    Document   : crearMenu
-    Created on : 06-may-2017, 20:42:23
-    Author     : sergi
+    Document   : editarMenu
+    Created on : 14-may-2017, 16:14:38
+    Author     : Ivan
 --%>
-
 <%@page import="entities.Producto"%>
 <%@page import="java.util.List"%>
+<%@page import="entities.Menu"%>
 <%@page import="servlets.ManagerMenu"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Menu:</title>
     </head>
     <body>
-        <%
-            String user = (String) session.getAttribute("user");
-            if (user != null) {
-        %>
         <% List <Producto> listaProductos = (List<Producto>) request.getAttribute("parameterListaProducto");
          if (listaProductos != null) {
-        %>  
-        
-        <h1>Creación de menuses</h1>
-        <form action="managerMenu">
-            <p>Name <input type="text" name="name"></p>
+        %>
+        <h1>Menu:</h1>
+        <form action="EditarMenu" method="POST">
+        <p>Productos: <select name="menu">
+            <%
+            List<Menu> menu = (List<Menu>) request.getAttribute("menu");
+            for (Menu m : menu){
+                %>
+                <option value="<%= m.getIdMenu() %>">Nombre:<%= m.getNombre() %> </option>
+                <% } %>
+            </select>
+        <p></p>
+        <p>Introduce el nuevo nombre del Menu: <input type="text" name="nombreNuevoMenu"></p>
+        <p>Introduce la nueva semana:
             <select name ='type'>
                 <option value='lunes'> lunes </option>
                 <option value='martes'> martes </option>
@@ -35,37 +40,40 @@
                 <option value='savado'> sávado </option>
                 <option value='domingo'> domingo </option>
             </select>
-
-            <p>Temporada <input type="text" name="temporada"></p>
-            Primer Plato: <select name ='primerPlato'>
+        </p>
+        <p>Introduce un nuevo nombre de Temporada: <input type="text" name="nombreNuevaTemporada"></p>
+        <p>Introduce un nuevo primer plato: 
+            <select name ='nuevoPrimerPlato'>
+                <% for (Producto p : listaProductos) { %>
+                <option value='<%=p.getIdProducto()%>'> <%=p.getNombre()%> </option>
+                <% }%>
+            </select></p>
+        <p>Introduce un nuevo segundo plato: 
+            <select name ='nuevoSegundoPlato'>
                 <% for (Producto p : listaProductos) { %>
                 <option value='<%=p.getIdProducto()%>'> <%=p.getNombre()%> </option>
                 <% }%>
             </select>
-            Segundo Plato: <select name ='segundoPlato'>
+        </p>
+        <p>Introduce un nuevo postre:
+            <select name ='nuevoPostre'>
                 <% for (Producto p : listaProductos) { %>
                 <option value='<%=p.getIdProducto()%>'> <%=p.getNombre()%> </option>
                 <% }%>
             </select>
-            Postre: <select name ='postre'>
+        </p>
+        <p>Introduce un nuevo bebida:
+            <select name ='nuevaBebida'>
                 <% for (Producto p : listaProductos) { %>
                 <option value='<%=p.getIdProducto()%>'> <%=p.getNombre()%> </option>
                 <% }%>
             </select>
-           Bebida: <select name ='bebida'>
-                <% for (Producto p : listaProductos) { %>
-                <option value='<%=p.getIdProducto()%>'> <%=p.getNombre()%> </option>
-                <% }%>
-            </select>
-            <p>Precio <input type="number" name="precio"></p>
-            <input type="submit" value=crearMenu name="parameter">
+        </p>
+        <p>Introduce el nuevo precio: <input type="number" name="nuevoPrecio"></p>
+        <p><input type="submit" name="editar" value="Guardar"></p>
         </form>
-
-        <% } %>
-        <% } else {
-        %>
-        <h1>No hay usuario validado.</h1>
-        <%
-            }%>
+            <% }else { %>
+            No hay productos disponibles
+            <% } %>
     </body>
 </html>
